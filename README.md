@@ -1,4 +1,10 @@
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/4899f922-7878-4b37-b464-74bd7d0ac347" width="112" height="112" alt="Falak — فلك" />
+</p>
+
 # Falak | فَلَك
+
+https://github.com/user-attachments/assets/bd5fecc8-0d4a-4d64-ace8-7f95da75d5a9
 
 **File tools, one gesture away.**  
 A Windows desktop toolkit for drag-and-drop file conversion, PDF and image tools, media processing, and workflow macros.
