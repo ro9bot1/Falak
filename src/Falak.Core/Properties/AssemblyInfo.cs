@@ -1,0 +1,15 @@
+using System.Diagnostics;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Runtime.Versioning;
+using System.Security;
+using System.Security.Permissions;
+
+[assembly: AssemblyCompany("Robot")]
+[assembly: AssemblyConfiguration("Release")]
+[assembly: AssemblyCopyright("Made by Robot")]
+[assembly: AssemblyFileVersion("1.2.0.0")]
+[assembly: AssemblyInformationalVersion("1.2.0+fad1a5e377a9225aef03903011b956fc54f06019")]
+[assembly: AssemblyProduct("Falak")]
+[assembly: AssemblyTitle("Falak.Core")]
+[assembly: AssemblyVersion("1.2.0.0")]
