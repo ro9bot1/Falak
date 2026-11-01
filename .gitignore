@@ -1,0 +1,14 @@
+# Falak - .NET / Visual Studio
+**/bin/
+**/obj/
+.vs/
+*.user
+*.suo
+*.cache
+*.pdb
+*.log
+TestResults/
+Falak_GitHub_Release/
+.Falak_SingleFile_Build_*/
+FALAK_*.txt
+FALAK_*.zip

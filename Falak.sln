@@ -1,0 +1,36 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Falak.Core", "src\Falak.Core\Falak.Core.csproj", "{4C01832F-338B-54C8-A481-2B1E6CB99859}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Falak.Interop", "src\Falak.Interop\Falak.Interop.csproj", "{EF46EB86-E574-545A-868A-A46FCB43C1EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Falak.Engines", "src\Falak.Engines\Falak.Engines.csproj", "{CDD1F871-876E-58A5-880E-A442E137C9C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Falak", "src\Falak\Falak.csproj", "{879BF7FE-8D81-571A-B321-D737A06E2C9D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4C01832F-338B-54C8-A481-2B1E6CB99859}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C01832F-338B-54C8-A481-2B1E6CB99859}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C01832F-338B-54C8-A481-2B1E6CB99859}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C01832F-338B-54C8-A481-2B1E6CB99859}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF46EB86-E574-545A-868A-A46FCB43C1EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF46EB86-E574-545A-868A-A46FCB43C1EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF46EB86-E574-545A-868A-A46FCB43C1EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF46EB86-E574-545A-868A-A46FCB43C1EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDD1F871-876E-58A5-880E-A442E137C9C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDD1F871-876E-58A5-880E-A442E137C9C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDD1F871-876E-58A5-880E-A442E137C9C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDD1F871-876E-58A5-880E-A442E137C9C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{879BF7FE-8D81-571A-B321-D737A06E2C9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{879BF7FE-8D81-571A-B321-D737A06E2C9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{879BF7FE-8D81-571A-B321-D737A06E2C9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{879BF7FE-8D81-571A-B321-D737A06E2C9D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
