@@ -1,0 +1,60 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>Falak</AssemblyName>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <OutputType>WinExe</OutputType>
+    <UseWPF>True</UseWPF>
+    <!-- WPF ThemeMode is experimental; supported Microsoft escape hatch for code-behind. -->
+    <NoWarn>$(NoWarn);WPF0001</NoWarn>
+    <TargetFramework>net10.0-windows10.0.19041.0</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>14.0</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>falak.ico</ApplicationIcon>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <ApplicationDefinition Remove="Falak.App\App.xaml" />
+    <ApplicationDefinition Include="Falak.App\App.xaml" Generator="MSBuild:Compile" SubType="Designer" LogicalName="app.xaml" />
+    <Page Remove="Falak.App\DesignerWindow.xaml" />
+    <Page Remove="Falak.App\HomeWindow.xaml" />
+    <Page Remove="Falak.App\SettingsWindow.xaml" />
+    <Page Remove="Falak.App\ToastWindow.xaml" />
+    <Page Remove="Falak.App\TrayMenuWindow.xaml" />
+    <Page Remove="theme\styles.xaml" />
+    <Page Include="Falak.App\DesignerWindow.xaml" Generator="MSBuild:Compile" SubType="Designer" LogicalName="designerwindow.xaml" />
+    <Page Include="Falak.App\HomeWindow.xaml" Generator="MSBuild:Compile" SubType="Designer" LogicalName="homewindow.xaml" />
+    <Page Include="Falak.App\SettingsWindow.xaml" Generator="MSBuild:Compile" SubType="Designer" LogicalName="settingswindow.xaml" />
+    <Page Include="Falak.App\ToastWindow.xaml" Generator="MSBuild:Compile" SubType="Designer" LogicalName="toastwindow.xaml" />
+    <Page Include="Falak.App\TrayMenuWindow.xaml" Generator="MSBuild:Compile" SubType="Designer" LogicalName="traymenuwindow.xaml" />
+    <Page Include="theme\styles.xaml" Generator="MSBuild:Compile" SubType="Designer" LogicalName="theme/styles.xaml" />
+    <Content Include="..\..\Tools\**\*" Link="Tools\%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    <Resource Remove="assets\falak.ico" />
+    <Resource Include="assets\falak.ico" LogicalName="assets/falak.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\QA_Samples\**\*" Link="QA_Samples\%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" Condition="'$(PublishSingleFile)' != 'true'" />
+    <EmbeddedResource Include="..\..\Resources\FalakSampleCorpus.zip" LogicalName="Falak.SampleCorpus.zip" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Falak.Core\Falak.Core.csproj" />
+    <ProjectReference Include="..\Falak.Engines\Falak.Engines.csproj" />
+    <ProjectReference Include="..\Falak.Interop\Falak.Interop.csproj" />
+    <PackageReference Include="PDFsharp" Version="6.2.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Microsoft Oct 2026 security fixes, CVE-2026-84008 / CVE-2026-70162 -->
+    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="10.0.13" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\Licenses\ApplicationCredit.txt" LogicalName="Falak.ApplicationCredit.txt" />
+    <EmbeddedResource Include="..\..\Licenses\THIRD_PARTY_LICENSES.txt" LogicalName="Falak.ThirdPartyLicenses.txt" />
+  </ItemGroup>
+</Project>
