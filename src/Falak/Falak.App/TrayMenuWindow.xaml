@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Window x:Class="Falak.App.TrayMenuWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Width="260" SizeToContent="Height" WindowStyle="None" AllowsTransparency="True" Background="#00FFFFFF" ResizeMode="NoResize" ShowInTaskbar="False" Topmost="True" FlowDirection="RightToLeft" FontFamily="{StaticResource UiFont}" xmlns:app="clr-namespace:Falak.App;assembly=Falak">
+  <FrameworkElement.Resources>
+    <ResourceDictionary>
+      <Style x:Key="MenuItemButton" TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonBase}">
+        <Setter Property="Background" Value="#00FFFFFF" />
+        <Setter Property="Foreground" Value="{DynamicResource Ink}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="Padding" Value="12,8" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="Template">
+          <Setter.Value>
+            <ControlTemplate TargetType="{x:Type Button}">
+              <Border Name="Chrome" Background="{TemplateBinding Control.Background}" CornerRadius="8" Padding="{TemplateBinding Control.Padding}">
+                <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+              </Border>
+            </ControlTemplate>
+          </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+          <Trigger Property="UIElement.IsMouseOver" Value="True">
+            <Setter Property="Background" Value="{DynamicResource AccentSoft}" />
+          </Trigger>
+        </Style.Triggers>
+      </Style>
+    </ResourceDictionary>
+  </FrameworkElement.Resources>
+  <Border Margin="14" CornerRadius="14" Background="{DynamicResource PopupSurface}" BorderBrush="{DynamicResource PopupBorder}" BorderThickness="1" Padding="6">
+    <UIElement.Effect>
+      <DropShadowEffect BlurRadius="24" ShadowDepth="6" Direction="270" Opacity="0.18" Color="#08140F" />
+    </UIElement.Effect>
+    <StackPanel>
+      <StackPanel Orientation="Horizontal" Margin="10,8,10,10">
+        <Image Name="Mark" Width="22" Height="22" FlowDirection="LeftToRight" />
+        <TextBlock Text="فَلَك" Style="{StaticResource H2}" FontSize="15" Margin="10,0,0,0" VerticalAlignment="Center" />
+        <TextBlock Name="StateLine" Style="{StaticResource Caption}" Margin="8,0,0,0" VerticalAlignment="Center" />
+      </StackPanel>
+      <Button Style="{StaticResource MenuItemButton}" Click="Open_Click">
+        <StackPanel Orientation="Horizontal">
+          <TextBlock Style="{StaticResource Icon}" Text="" Width="20" />
+          <TextBlock Text="فتح فَلَك" Margin="10,0,0,0" />
+        </StackPanel>
+      </Button>
+      <Button Style="{StaticResource MenuItemButton}" Click="Pause_Click">
+        <StackPanel Orientation="Horizontal">
+          <TextBlock Name="PauseGlyph" Style="{StaticResource Icon}" Text="" Width="20" />
+          <TextBlock Name="PauseText" Text="إيقاف مؤقت" Margin="10,0,0,0" />
+        </StackPanel>
+      </Button>
+      <Button Style="{StaticResource MenuItemButton}" Click="Samples_Click">
+        <StackPanel Orientation="Horizontal">
+          <TextBlock Style="{StaticResource Icon}" Text="" Width="20" />
+          <TextBlock Text="ملفات تجريبية" Margin="10,0,0,0" />
+        </StackPanel>
+      </Button>
+      <Border Height="1" Background="{DynamicResource Line}" Margin="8,4" />
+      <Button Style="{StaticResource MenuItemButton}" Click="Exit_Click">
+        <StackPanel Orientation="Horizontal">
+          <TextBlock Style="{StaticResource Icon}" Text="" Width="20" />
+          <TextBlock Text="خروج" Margin="10,0,0,0" />
+        </StackPanel>
+      </Button>
+    </StackPanel>
+  </Border>
+</Window>

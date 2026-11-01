@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window x:Class="Falak.App.DesignerWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:Falak.App" Title="فَلَك · خلفية وتصميم" Width="1140" Height="780" MinWidth="940" MinHeight="640" FlowDirection="RightToLeft" FontFamily="{StaticResource UiFont}" FontSize="13" Background="{DynamicResource Bg}" WindowStartupLocation="CenterScreen" Icon="pack://application:,,,/assets/falak.ico">
+  <FrameworkElement.Resources>
+    <ResourceDictionary>
+      <Style x:Key="SectionLabel" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource Caption}">
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Margin" Value="0,18,0,8" />
+      </Style>
+      <Style x:Key="Chip" TargetType="{x:Type RadioButton}">
+        <Setter Property="FrameworkElement.Cursor" Value="Hand" />
+        <Setter Property="FrameworkElement.FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Margin" Value="0,0,6,6" />
+        <Setter Property="Template">
+          <Setter.Value>
+            <ControlTemplate TargetType="{x:Type RadioButton}">
+              <Border Name="Box" CornerRadius="8" Padding="11,4" BorderThickness="1" BorderBrush="{DynamicResource Line}" Background="{DynamicResource Surface}">
+                <ContentPresenter HorizontalAlignment="Center" TextElement.FontSize="12" TextElement.FontWeight="SemiBold" TextElement.Foreground="{DynamicResource Ink}" />
+              </Border>
+              <ControlTemplate.Triggers>
+                <Trigger Property="ToggleButton.IsChecked" Value="True">
+                  <Setter TargetName="Box" Value="{DynamicResource AccentSoft}" Property="Border.Background" />
+                  <Setter TargetName="Box" Value="{DynamicResource Accent}" Property="Border.BorderBrush" />
+                </Trigger>
+              </ControlTemplate.Triggers>
+            </ControlTemplate>
+          </Setter.Value>
+        </Setter>
+      </Style>
+      <Style x:Key="Swatch" TargetType="{x:Type RadioButton}">
+        <Setter Property="FrameworkElement.Cursor" Value="Hand" />
+        <Setter Property="FrameworkElement.FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Margin" Value="0,0,8,8" />
+        <Setter Property="Width" Value="32" />
+        <Setter Property="Height" Value="32" />
+        <Setter Property="Template">
+          <Setter.Value>
+            <ControlTemplate TargetType="{x:Type RadioButton}">
+              <Grid>
+                <Ellipse Name="Ring" Stroke="{DynamicResource Line}" StrokeThickness="1" />
+                <Ellipse Margin="3" Fill="{TemplateBinding Control.Background}" Stroke="#1A000000" StrokeThickness="0.5" />
+              </Grid>
+              <ControlTemplate.Triggers>
+                <Trigger Property="ToggleButton.IsChecked" Value="True">
+                  <Setter TargetName="Ring" Value="{DynamicResource Accent}" Property="Shape.Stroke" />
+                  <Setter TargetName="Ring" Property="Shape.StrokeThickness" Value="2" />
+                </Trigger>
+              </ControlTemplate.Triggers>
+            </ControlTemplate>
+          </Setter.Value>
+        </Setter>
+      </Style>
+      <Style x:Key="SmallSwatch" TargetType="{x:Type RadioButton}" BasedOn="{StaticResource Swatch}">
+        <Setter Property="Width" Value="28" />
+        <Setter Property="Height" Value="28" />
+        <Setter Property="Margin" Value="0,0,6,6" />
+      </Style>
+      <Style x:Key="Dot" TargetType="{x:Type Border}">
+        <Setter Property="Width" Value="20" />
+        <Setter Property="Height" Value="20" />
+        <Setter Property="Border.CornerRadius" Value="10" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Line}" />
+      </Style>
+    </ResourceDictionary>
+  </FrameworkElement.Resources>
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="330" />
+      <ColumnDefinition Width="*" />
+    </Grid.ColumnDefinitions>
+    <Border Grid.Column="0" Background="{DynamicResource Surface}" BorderBrush="{DynamicResource Line}" BorderThickness="0,0,1,0">
+      <Grid Margin="22,18,22,18">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="*" />
+          <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="0,0,6,0">
+          <StackPanel>
+            <TextBlock Text="خلفية وتصميم" Style="{StaticResource H2}" />
+            <TextBlock Name="SourceName" Style="{StaticResource Caption}" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" />
+            <StackPanel Name="PagePanel" Visibility="Collapsed">
+              <TextBlock Text="الصفحة" Style="{StaticResource SectionLabel}" />
+              <StackPanel Orientation="Horizontal">
+                <Button Style="{StaticResource IconButton}" ToolTip="الصفحة التالية" Click="NextPage_Click">
+                  <TextBlock Style="{StaticResource Icon}" Text="" FontSize="12" />
+                </Button>
+                <TextBlock Name="PageText" Style="{StaticResource Body}" MinWidth="64" TextAlignment="Center" VerticalAlignment="Center" />
+                <Button Style="{StaticResource IconButton}" ToolTip="الصفحة السابقة" Click="PrevPage_Click">
+                  <TextBlock Style="{StaticResource Icon}" Text="" FontSize="12" />
+                </Button>
+              </StackPanel>
+            </StackPanel>
+            <TextBlock Text="الجزء الظاهر" Style="{StaticResource SectionLabel}" />
+            <WrapPanel>
+              <Button Name="CropButton" Style="{StaticResource SecondaryButton}" Padding="12,5" Click="Crop_Click">
+                <StackPanel Orientation="Horizontal">
+                  <TextBlock Style="{StaticResource Icon}" Text="" FontSize="13" />
+                  <TextBlock Name="CropLabel" Text="قصّ" Margin="8,0,0,0" FontSize="12.5" />
+                </StackPanel>
+              </Button>
+              <Button Name="ResetCropButton" Style="{StaticResource GhostButton}" Content="إلغاء القص" Margin="6,0,0,0" FontSize="12.5" Visibility="Collapsed" Click="ResetCrop_Click" />
+            </WrapPanel>
+            <TextBlock Text="الخلفية" Style="{StaticResource SectionLabel}" />
+            <WrapPanel>
+              <RadioButton Name="SolidMode" Style="{StaticResource Chip}" GroupName="bgmode" Content="لون واحد" IsChecked="True" Checked="BackgroundMode_Checked" />
+              <RadioButton Name="GradientMode" Style="{StaticResource Chip}" GroupName="bgmode" Content="تدرّج" Checked="BackgroundMode_Checked" />
+            </WrapPanel>
+            <TextBlock Name="SuggestLabel" Text="مقترحة من ألوان الملف" Style="{StaticResource Caption}" Margin="0,8,0,8" />
+            <WrapPanel Name="Swatches" />
+            <StackPanel Name="SolidRow" Orientation="Horizontal" Margin="0,4,0,0">
+              <Button Name="SolidButton" Style="{StaticResource SecondaryButton}" Padding="10,5" Click="PickSolid_Click">
+                <StackPanel Orientation="Horizontal">
+                  <Border Name="SolidDot" Style="{StaticResource Dot}" />
+                  <TextBlock Text="أي لون" Margin="8,0,0,0" FontSize="12.5" VerticalAlignment="Center" />
+                </StackPanel>
+              </Button>
+            </StackPanel>
+            <StackPanel Name="GradientRow" Visibility="Collapsed" Margin="0,4,0,0">
+              <StackPanel Orientation="Horizontal">
+                <Button Name="FromButton" Style="{StaticResource SecondaryButton}" Padding="10,5" Click="PickFrom_Click">
+                  <StackPanel Orientation="Horizontal">
+                    <Border Name="FromDot" Style="{StaticResource Dot}" />
+                    <TextBlock Text="من" Margin="8,0,0,0" FontSize="12.5" VerticalAlignment="Center" />
+                  </StackPanel>
+                </Button>
+                <Button Style="{StaticResource IconButton}" Margin="4,0" ToolTip="اعكس الاتجاه" AutomationProperties.Name="اعكس الاتجاه" Click="SwapGradient_Click">
+                  <TextBlock Style="{StaticResource Icon}" Text="" FontSize="13" />
+                </Button>
+                <Button Name="ToButton" Style="{StaticResource SecondaryButton}" Padding="10,5" Click="PickTo_Click">
+                  <StackPanel Orientation="Horizontal">
+                    <Border Name="ToDot" Style="{StaticResource Dot}" />
+                    <TextBlock Text="إلى" Margin="8,0,0,0" FontSize="12.5" VerticalAlignment="Center" />
+                  </StackPanel>
+                </Button>
+              </StackPanel>
+              <TextBlock Text="زاوية التدرّج" Style="{StaticResource Caption}" Margin="0,12,0,4" />
+              <Slider Name="AngleSlider" Style="{StaticResource AccentSlider}" Minimum="0" Maximum="360" Value="45" ValueChanged="Angle_Changed" />
+            </StackPanel>
+            <TextBlock Text="المقاس" Style="{StaticResource SectionLabel}" />
+            <WrapPanel Name="Ratios" />
+            <TextBlock Text="الهامش" Style="{StaticResource SectionLabel}" />
+            <Slider Name="PaddingSlider" Style="{StaticResource AccentSlider}" Minimum="0" Maximum="0.3" Value="0.1" ValueChanged="Option_Changed" />
+            <TextBlock Text="انحناء الزوايا" Style="{StaticResource SectionLabel}" />
+            <Slider Name="RadiusSlider" Style="{StaticResource AccentSlider}" Minimum="0" Maximum="0.12" Value="0.035" ValueChanged="Option_Changed" />
+            <CheckBox Name="ShadowSwitch" Style="{StaticResource Switch}" Content="ظل ناعم" IsChecked="True" Margin="0,16,0,0" Checked="Option_Changed" Unchecked="Option_Changed" />
+            <Grid Margin="0,22,0,0">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+              </Grid.ColumnDefinitions>
+              <StackPanel>
+                <TextBlock Text="الرسم على الصورة" Style="{StaticResource Body}" FontWeight="SemiBold" LineHeight="24" />
+                <TextBlock Text="بالفأرة أو القلم، فوق الصورة مباشرة" Style="{StaticResource Caption}" />
+              </StackPanel>
+              <CheckBox Name="DrawSwitch" Grid.Column="1" Style="{StaticResource Switch}" VerticalAlignment="Center" AutomationProperties.Name="الرسم على الصورة" Checked="Draw_Changed" Unchecked="Draw_Changed" />
+            </Grid>
+            <StackPanel Name="DrawPanel" Visibility="Collapsed" Margin="0,12,0,0">
+              <WrapPanel>
+                <RadioButton Name="PenTool" Style="{StaticResource Chip}" GroupName="tool" IsChecked="True" Checked="Tool_Checked">
+                  <StackPanel Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource Icon}" Text="" FontSize="12" />
+                    <TextBlock Text="قلم" Margin="6,0,0,0" />
+                  </StackPanel>
+                </RadioButton>
+                <RadioButton Name="MarkerTool" Style="{StaticResource Chip}" GroupName="tool" Checked="Tool_Checked">
+                  <StackPanel Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource Icon}" Text="" FontSize="12" />
+                    <TextBlock Text="تظليل" Margin="6,0,0,0" />
+                  </StackPanel>
+                </RadioButton>
+                <RadioButton Name="EraserTool" Style="{StaticResource Chip}" GroupName="tool" Checked="Tool_Checked">
+                  <StackPanel Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource Icon}" Text="" FontSize="12" />
+                    <TextBlock Text="ممحاة" Margin="6,0,0,0" />
+                  </StackPanel>
+                </RadioButton>
+              </WrapPanel>
+              <TextBlock Text="لون القلم" Style="{StaticResource Caption}" Margin="0,8,0,8" />
+              <WrapPanel Name="PenColors" />
+              <Button Name="PenButton" Style="{StaticResource SecondaryButton}" Padding="10,5" HorizontalAlignment="Left" Margin="0,2,0,0" Click="PickPen_Click">
+                <StackPanel Orientation="Horizontal">
+                  <Border Name="PenDot" Style="{StaticResource Dot}" />
+                  <TextBlock Text="أي لون" Margin="8,0,0,0" FontSize="12.5" VerticalAlignment="Center" />
+                </StackPanel>
+              </Button>
+              <TextBlock Text="السُمك" Style="{StaticResource Caption}" Margin="0,12,0,4" />
+              <Slider Name="ThicknessSlider" Style="{StaticResource AccentSlider}" Minimum="0.002" Maximum="0.03" Value="0.008" ValueChanged="Thickness_Changed" />
+              <WrapPanel Margin="0,10,0,0">
+                <Button Style="{StaticResource GhostButton}" FontSize="12.5" Click="UndoInk_Click">
+                  <StackPanel Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource Icon}" Text="" FontSize="12" />
+                    <TextBlock Text="تراجع" Margin="6,0,0,0" />
+                  </StackPanel>
+                </Button>
+                <Button Style="{StaticResource GhostButton}" FontSize="12.5" Margin="6,0,0,0" Click="ClearInk_Click">
+                  <StackPanel Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource Icon}" Text="" FontSize="12" />
+                    <TextBlock Text="مسح الرسم" Margin="6,0,0,0" />
+                  </StackPanel>
+                </Button>
+              </WrapPanel>
+            </StackPanel>
+          </StackPanel>
+        </ScrollViewer>
+        <StackPanel Grid.Row="1" Margin="0,14,0,0">
+          <Button x:Name="QA_SaveEditor" Style="{StaticResource PrimaryButton}" HorizontalAlignment="Stretch" Click="Save_Click">
+            <StackPanel Orientation="Horizontal">
+              <TextBlock Style="{StaticResource Icon}" Text="" FontSize="13" Foreground="{DynamicResource AccentInk}" />
+              <TextBlock Text="حفظ الصورة" Margin="8,0,0,0" />
+            </StackPanel>
+          </Button>
+          <Button Style="{StaticResource SecondaryButton}" HorizontalAlignment="Stretch" Margin="0,8,0,0" Click="Copy_Click">
+            <StackPanel Orientation="Horizontal">
+              <TextBlock Style="{StaticResource Icon}" Text="" FontSize="13" />
+              <TextBlock Text="نسخ للصق في أي مكان" Margin="8,0,0,0" />
+            </StackPanel>
+          </Button>
+        </StackPanel>
+      </Grid>
+    </Border>
+    <Grid Column="1" Margin="28">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+      <Viewbox Name="PreviewBox" Stretch="Uniform" FlowDirection="LeftToRight" />
+      <local:CropBox x:Name="Cropper" Visibility="Collapsed" />
+      <TextBlock Name="HintText" Grid.Row="1" Style="{StaticResource Caption}" HorizontalAlignment="Center" Margin="0,12,0,0" />
+      <Grid Name="CropBar" Row="1" Margin="0,12,0,0" Visibility="Collapsed">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="اسحب الزوايا أو الحواف، أو حرّك الإطار من داخله" Style="{StaticResource Caption}" VerticalAlignment="Center" TextWrapping="Wrap" Margin="0,0,12,0" />
+        <StackPanel Grid.Column="1" Orientation="Horizontal">
+          <Button Content="إلغاء" Style="{StaticResource GhostButton}" Margin="0,0,6,0" Click="CropCancel_Click" />
+          <Button Content="الصفحة كاملة" Style="{StaticResource SecondaryButton}" Padding="12,6" Margin="0,0,8,0" Click="CropFull_Click" />
+          <Button x:Name="QA_CropApply" Style="{StaticResource PrimaryButton}" Padding="16,6" Click="CropDone_Click">
+            <StackPanel Orientation="Horizontal">
+              <TextBlock Style="{StaticResource Icon}" Text="" FontSize="12" Foreground="{DynamicResource AccentInk}" />
+              <TextBlock Text="تم" Margin="8,0,0,0" />
+            </StackPanel>
+          </Button>
+        </StackPanel>
+      </Grid>
+    </Grid>
+  </Grid>
+</Window>

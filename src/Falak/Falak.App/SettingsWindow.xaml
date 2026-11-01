@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window x:Class="Falak.App.SettingsWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="فَلَك · الإعدادات" Width="560" Height="640" MinWidth="480" MinHeight="520" FlowDirection="RightToLeft" FontFamily="{StaticResource UiFont}" FontSize="13" Background="{DynamicResource Bg}" WindowStartupLocation="CenterOwner" ResizeMode="CanResize" Icon="pack://application:,,,/assets/falak.ico" xmlns:app="clr-namespace:Falak.App;assembly=Falak">
+  <FrameworkElement.Resources>
+    <ResourceDictionary>
+      <Style x:Key="Segment" TargetType="{x:Type RadioButton}">
+        <Setter Property="FrameworkElement.Cursor" Value="Hand" />
+        <Setter Property="FrameworkElement.FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Template">
+          <Setter.Value>
+            <ControlTemplate TargetType="{x:Type RadioButton}">
+              <Border Name="Box" CornerRadius="8" Padding="14,5" Margin="2" Background="#00FFFFFF">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                  <TextBlock Name="Glyph" Text="{TemplateBinding FrameworkElement.Tag}" FontSize="13" Foreground="{DynamicResource Muted}" Style="{StaticResource Icon}" />
+                  <ContentPresenter Margin="7,0,0,0" TextElement.FontSize="12.5" TextElement.FontWeight="SemiBold" TextElement.Foreground="{DynamicResource Muted}" />
+                </StackPanel>
+              </Border>
+              <ControlTemplate.Triggers>
+                <Trigger Property="ToggleButton.IsChecked" Value="True">
+                  <Setter TargetName="Box" Value="{DynamicResource Surface}" Property="Border.Background" />
+                  <Setter TargetName="Glyph" Value="{DynamicResource Accent}" Property="TextBlock.Foreground" />
+                </Trigger>
+              </ControlTemplate.Triggers>
+            </ControlTemplate>
+          </Setter.Value>
+        </Setter>
+      </Style>
+      <Style x:Key="AccentDot" TargetType="{x:Type RadioButton}">
+        <Setter Property="FrameworkElement.Cursor" Value="Hand" />
+        <Setter Property="FrameworkElement.FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Margin" Value="0,0,14,0" />
+        <Setter Property="Template">
+          <Setter.Value>
+            <ControlTemplate TargetType="{x:Type RadioButton}">
+              <StackPanel>
+                <Grid Width="40" Height="40">
+                  <Ellipse Name="Ring" Stroke="#00FFFFFF" StrokeThickness="2" />
+                  <Ellipse Margin="5" Fill="{TemplateBinding Control.Background}" />
+                  <TextBlock Name="Check" Text="" FontSize="13" Foreground="#FFFFFFFF" Visibility="Collapsed" Style="{StaticResource Icon}" />
+                </Grid>
+                <ContentPresenter HorizontalAlignment="Center" Margin="0,4,0,0" TextElement.FontSize="11.5" TextElement.Foreground="{DynamicResource Muted}" />
+              </StackPanel>
+              <ControlTemplate.Triggers>
+                <Trigger Property="ToggleButton.IsChecked" Value="True">
+                  <Setter TargetName="Ring" Property="Shape.Stroke" Value="{Binding Background, RelativeSource={RelativeSource TemplatedParent}}" />
+                  <Setter TargetName="Check" Property="Visibility" Value="Visible" />
+                </Trigger>
+              </ControlTemplate.Triggers>
+            </ControlTemplate>
+          </Setter.Value>
+        </Setter>
+      </Style>
+    </ResourceDictionary>
+  </FrameworkElement.Resources>
+  <ScrollViewer VerticalScrollBarVisibility="Auto">
+    <StackPanel Margin="28,22,28,24">
+      <TextBlock Text="الإعدادات" Style="{StaticResource H2}" FontSize="20" LineHeight="30" />
+      <Border Style="{StaticResource Card}" Margin="0,16,0,0" Padding="20,16">
+        <StackPanel>
+          <TextBlock Text="المظهر" Style="{StaticResource H2}" FontSize="15" />
+          <TextBlock Text="الوضع" Style="{StaticResource Caption}" Margin="0,12,0,6" />
+          <Border Background="{DynamicResource SurfaceRaised}" BorderBrush="{DynamicResource Line}" BorderThickness="1" CornerRadius="10" HorizontalAlignment="Left" Padding="2">
+            <StackPanel Orientation="Horizontal">
+              <RadioButton Name="ThemeSystem" Style="{StaticResource Segment}" GroupName="theme" Content="تلقائي" Tag="" Checked="Theme_Checked" />
+              <RadioButton Name="ThemeLight" Style="{StaticResource Segment}" GroupName="theme" Content="فاتح" Tag="" Checked="Theme_Checked" />
+              <RadioButton Name="ThemeDark" Style="{StaticResource Segment}" GroupName="theme" Content="داكن" Tag="" Checked="Theme_Checked" />
+            </StackPanel>
+          </Border>
+          <TextBlock Text="لون التطبيق" Style="{StaticResource Caption}" Margin="0,16,0,8" />
+          <WrapPanel Name="AccentPanel" />
+          <Grid Margin="0,16,0,0">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <StackPanel>
+              <TextBlock Text="واجهة زجاجية" Style="{StaticResource Body}" FontWeight="SemiBold" LineHeight="24" />
+              <TextBlock Name="GlassNote" Text="العجلة والنوافذ كالزجاج، يظهر خلفها ما على الشاشة بنعومة" TextWrapping="Wrap" Style="{StaticResource Caption}" />
+            </StackPanel>
+            <CheckBox Name="GlassSwitch" Grid.Column="1" Style="{StaticResource Switch}" VerticalAlignment="Center" AutomationProperties.Name="واجهة زجاجية" Checked="Glass_Changed" Unchecked="Glass_Changed" />
+          </Grid>
+        </StackPanel>
+      </Border>
+      <Border Style="{StaticResource Card}" Margin="0,12,0,0" Padding="20,16">
+        <StackPanel>
+          <TextBlock Text="التشغيل" Style="{StaticResource H2}" FontSize="15" />
+          <Grid Margin="0,12,0,0">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <StackPanel>
+              <TextBlock Text="التشغيل مع ويندوز" Style="{StaticResource Body}" FontWeight="SemiBold" LineHeight="24" />
+              <TextBlock Text="يبدأ فَلَك بجانب الساعة دون أن يفتح نافذة" Style="{StaticResource Caption}" />
+            </StackPanel>
+            <CheckBox Name="StartupSwitch" Grid.Column="1" Style="{StaticResource Switch}" VerticalAlignment="Center" AutomationProperties.Name="التشغيل مع ويندوز" Checked="Startup_Changed" Unchecked="Startup_Changed" />
+          </Grid>
+          <Grid Margin="0,14,0,0">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <StackPanel>
+              <TextBlock Text="صوت التنقل في العجلة" Style="{StaticResource Body}" FontWeight="SemiBold" LineHeight="24" />
+              <TextBlock Text="نقرة خفيفة كلما انتقلت من خيار إلى آخر" Style="{StaticResource Caption}" />
+            </StackPanel>
+            <CheckBox Name="SoundSwitch" Grid.Column="1" Style="{StaticResource Switch}" VerticalAlignment="Center" AutomationProperties.Name="صوت التنقل في العجلة" Checked="Sound_Changed" Unchecked="Sound_Changed" />
+          </Grid>
+          <TextBlock Text="المفاتيح" Style="{StaticResource Caption}" Margin="0,16,0,8" />
+          <UniformGrid Columns="3">
+            <StackPanel Orientation="Horizontal">
+              <Border Style="{StaticResource Keycap}">
+                <TextBlock Text="Shift" Style="{StaticResource KeycapText}" FontSize="12" />
+              </Border>
+              <TextBlock Text="تحويل" Style="{StaticResource Caption}" Margin="8,0,0,0" VerticalAlignment="Center" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+              <Border Style="{StaticResource Keycap}">
+                <TextBlock Text="Ctrl" Style="{StaticResource KeycapText}" FontSize="12" />
+              </Border>
+              <TextBlock Text="أدوات" Style="{StaticResource Caption}" Margin="8,0,0,0" VerticalAlignment="Center" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+              <Border Style="{StaticResource Keycap}">
+                <TextBlock Text="Space" Style="{StaticResource KeycapText}" FontSize="12" />
+              </Border>
+              <TextBlock Text="إجراءات" Style="{StaticResource Caption}" Margin="8,0,0,0" VerticalAlignment="Center" />
+            </StackPanel>
+          </UniformGrid>
+        </StackPanel>
+      </Border>
+      <Border Style="{StaticResource Card}" Margin="0,12,0,0" Padding="20,16">
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+          </Grid.ColumnDefinitions>
+          <Image Name="Mark" Width="36" Height="36" FlowDirection="LeftToRight" />
+          <StackPanel Grid.Column="1" Margin="12,0,0,0" VerticalAlignment="Center">
+            <TextBlock Name="VersionText" Style="{StaticResource Body}" FontWeight="SemiBold" LineHeight="22" />
+            <TextBlock Text="ملفاتك لا تغادر جهازك · التحويل بلا إنترنت · بلا حساب" Style="{StaticResource Caption}" />
+          </StackPanel>
+          <Button Grid.Column="2" Content="سجل التشخيص" Style="{StaticResource GhostButton}" FontSize="12.5" Click="OpenLog_Click" />
+        </Grid>
+      </Border>
+    </StackPanel>
+  </ScrollViewer>
+</Window>
