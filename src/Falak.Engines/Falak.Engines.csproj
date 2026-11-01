@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>Falak.Engines</AssemblyName>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <TargetFramework>net10.0-windows10.0.19041.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>14.0</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemGroup />
+  <ItemGroup>
+    </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Falak.Core\Falak.Core.csproj" />
+    <PackageReference Include="PDFsharp" Version="6.2.0" />
+    <PackageReference Include="PdfPig" Version="0.1.11" />
+    <PackageReference Include="DocumentFormat.OpenXml" Version="3.3.0" />
+    <PackageReference Include="ClosedXML" Version="0.105.0" />
+    <EmbeddedResource Include="..\..\Resources\PdfToSlidesTemplate.pptx" LogicalName="Falak.PdfSlideTemplate.pptx" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Microsoft Oct 2026 security fixes, CVE-2026-84008 / CVE-2026-70162 -->
+    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="10.0.13" />
+  </ItemGroup>
+</Project>
