@@ -3,6 +3,8 @@
 **File tools, one gesture away.**  
 A Windows desktop toolkit for drag-and-drop file conversion, PDF and image tools, media processing, and workflow macros.
 
+Falak began as a Windows project inspired by [Tangerine for macOS](https://tangerineformac.com/). It brings the drag-and-drop wheel workflow to Windows, with additional tools, Arabic and English interfaces, and workflow macros. Falak is an independent project, not an official Windows release of Tangerine.
+
 [Releases](https://github.com/ro9bot1/Falak/releases) · [Report an issue](https://github.com/ro9bot1/Falak/issues)
 
 > Found a problem or have a suggestion? [Open an issue](https://github.com/ro9bot1/Falak/issues) so I can review it and work on a fix.
@@ -68,6 +70,8 @@ Please [open an issue](https://github.com/ro9bot1/Falak/issues) with your Window
 **أدوات ملفاتك، بحركة واحدة.**
 
 فَلَك تطبيق لويندوز يجمع تحويل الملفات وأدوات الصور وPDF ومعالجة الصوت والفيديو وتسجيل الماكرو في واجهة تعمل مع السحب والإفلات.
+
+بدأ فلك كمشروع لويندوز مستوحى من فكرة [Tangerine على macOS](https://tangerineformac.com/). ينقل تجربة السحب والإفلات والعجلة إلى ويندوز، مع أدوات إضافية، وواجهة بالعربية والإنجليزية، وتسجيل الماكرو. فلك مشروع مستقل، وليس إصدار ويندوز رسميًا من Tangerine.
 
 ### طريقة الاستخدام
 
