@@ -1,5 +1,8 @@
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/4899f922-7878-4b37-b464-74bd7d0ac347" width="112" height="112" alt="Falak — فلك" />
+  <picture>
+    <source srcset="https://github.com/user-attachments/assets/ccda124d-6cbd-47fd-b8b8-4a9c83ae1073" />
+    <img src="https://github.com/user-attachments/assets/ccda124d-6cbd-47fd-b8b8-4a9c83ae1073" width="112" alt="Falak — فلك" />
+  </picture>
 </p>
 
 # Falak | فَلَك
