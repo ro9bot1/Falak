@@ -5,9 +5,9 @@ using System.Runtime.Versioning;
 using System.Security;
 using System.Security.Permissions;
 
-[assembly: AssemblyCompany("Robot")]
+[assembly: AssemblyCompany("ro9bot1")]
 [assembly: AssemblyConfiguration("Release")]
-[assembly: AssemblyCopyright("Made by Robot")]
+[assembly: AssemblyCopyright("© 2026 ro9bot1")]
 [assembly: AssemblyFileVersion("1.2.0.0")]
 [assembly: AssemblyInformationalVersion("1.2.0+fad1a5e377a9225aef03903011b956fc54f06019")]
 [assembly: AssemblyProduct("Falak")]
